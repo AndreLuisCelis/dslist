@@ -28,7 +28,7 @@ public class GameService {
 	}
 	
 	private GameDto getGameDto(Game game) {
-		var gameDto = new GameDto(game.getId(), game.getTitle(), game.getYear(), game.getGender(), game.getPlataform(),
+		var gameDto = new GameDto(game.getId(), game.getTitle(), game.getYear(), game.getGenre(), game.getPlatforms(),
 				game.getScore(), game.getImgUrl(), game.getShortDescription(), game.getLongDescription());
 		return gameDto;
 	}

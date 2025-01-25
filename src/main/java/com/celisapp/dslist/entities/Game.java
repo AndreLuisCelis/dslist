@@ -17,17 +17,20 @@ public class Game implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id()
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 	
 	@Column(name = "game_year")
 	private Integer year;
-	private String gender;
-	private String plataform;
+	private String genre;
+	private String platforms;
 	private Double score;
 	private String imgUrl;
+	
+	@Column(columnDefinition = "TEXT")
 	private String shortDescription;
+	@Column(columnDefinition = "TEXT")
 	private String longDescription;
 	
 	
@@ -40,8 +43,8 @@ public class Game implements Serializable{
 		this.id = id;
 		this.title = title;
 		this.year = year;
-		this.gender = gender;
-		this.plataform = plataform;
+		this.genre = gender;
+		this.platforms = plataform;
 		this.score = score;
 		this.imgUrl = imgUrl;
 		this.shortDescription = shortDescription;
@@ -84,20 +87,20 @@ public class Game implements Serializable{
 		this.year = year;
 	}
 
-	public String getGender() {
-		return gender;
+	public String getGenre() {
+		return genre;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
 
-	public String getPlataform() {
-		return this.plataform;
+	public String getPlatforms() {
+		return this.platforms;
 	}
 
-	public void setPlataform(String plataform) {
-		this.plataform = plataform;
+	public void setPlatforms(String platforms) {
+		this.platforms = platforms;
 	}
 
 	public Double getScore() {
