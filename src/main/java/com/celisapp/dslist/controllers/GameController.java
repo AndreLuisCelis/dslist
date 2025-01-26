@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.celisapp.dslist.dto.GameDto;
+import com.celisapp.dslist.dto.GameListDto;
 import com.celisapp.dslist.dto.GameMinDto;
 import com.celisapp.dslist.entities.Game;
 import com.celisapp.dslist.service.GameService;
@@ -24,12 +25,17 @@ public class GameController {
 	
 	@GetMapping("")
 	private List<GameMinDto> getAllGames(){
-		return service.getGameList();
+		return service.getAllGames();
 	}
 	
 	@GetMapping("/{id}")
-	private GameMinDto getGameById(@PathVariable Long id) {
+	private GameDto getGameById(@PathVariable Long id) {
 		return service.getGameById(id);
+	}
+	
+	@GetMapping("/list")
+	private List<GameListDto> getAllGamesList() {
+		return service.getAllGameList();
 	}
 	
 	@PostMapping("")

@@ -3,6 +3,10 @@ package com.celisapp.dslist.dto;
 import java.io.Serializable;
 import java.util.Objects;
 
+import org.springframework.beans.BeanUtils;
+
+import com.celisapp.dslist.entities.Game;
+
 public class GameDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -15,6 +19,12 @@ public class GameDto implements Serializable {
 	private String imgUrl;
 	private String shortDescription;
 	private String longDescription;
+	
+	
+	// Para utilizar o beanUtils é preciso gerar os setters tambem
+	public GameDto(Game entity) {
+		BeanUtils.copyProperties(entity, this);
+	}
 
 	public GameDto(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl,
 			String shortDescription, String longDescription) {
