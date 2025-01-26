@@ -3,6 +3,7 @@ package com.celisapp.dslist.dto;
 import java.io.Serializable;
 
 import com.celisapp.dslist.entities.Game;
+import com.celisapp.dslist.projection.GameMinProjection;
 
 public class GameMinDto implements Serializable {
 
@@ -19,6 +20,14 @@ public class GameMinDto implements Serializable {
 		this.year = gameEntity.getYear();
 		this.imgUrl = gameEntity.getImgUrl();
 		this.shortDescription = gameEntity.getShortDescription();
+	}
+	
+	public GameMinDto(GameMinProjection projection) {
+		this.id = projection.getId();
+		this.title = projection.getTitle();
+		this.year = projection.getYear();
+		this.imgUrl = projection.getImgUrl();
+		this.shortDescription = projection.getShortDescription();
 	}
 
 	public Long getId() {

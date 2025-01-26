@@ -14,6 +14,7 @@ import com.celisapp.dslist.dto.GameDto;
 import com.celisapp.dslist.dto.GameListDto;
 import com.celisapp.dslist.dto.GameMinDto;
 import com.celisapp.dslist.entities.Game;
+import com.celisapp.dslist.projection.GameMinProjection;
 import com.celisapp.dslist.service.GameService;
 
 @RestController()
@@ -36,6 +37,11 @@ public class GameController {
 	@GetMapping("/list")
 	private List<GameListDto> getAllGamesList() {
 		return service.getAllGameList();
+	}
+	
+	@GetMapping("/list/{gameListId}")
+	private List<GameMinDto> getGamesListById(@PathVariable Long gameListId) {
+		return service.getGameListById(gameListId);
 	}
 	
 	@PostMapping("")

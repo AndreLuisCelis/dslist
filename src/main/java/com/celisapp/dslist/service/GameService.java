@@ -10,6 +10,7 @@ import com.celisapp.dslist.dto.GameDto;
 import com.celisapp.dslist.dto.GameListDto;
 import com.celisapp.dslist.dto.GameMinDto;
 import com.celisapp.dslist.entities.Game;
+import com.celisapp.dslist.projection.GameMinProjection;
 import com.celisapp.dslist.repositories.GameListRepository;
 import com.celisapp.dslist.repositories.GameRepository;
 
@@ -44,6 +45,11 @@ public class GameService {
 	public List<GameListDto> getAllGameList(){
 		var list = gameListRepository.findAll();
 		return list.stream().map(gamelist -> new GameListDto(gamelist)).toList();
+	}
+	
+	public List<GameMinDto> getGameListById(Long gameListId){
+		var list = repository.searchByList(gameListId);
+		return list.stream().map(game -> new GameMinDto(game)).toList();
 	}
 	
 	private GameDto getGameDto(Game game) {
