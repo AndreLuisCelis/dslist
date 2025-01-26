@@ -1,6 +1,7 @@
 package com.celisapp.dslist.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,13 @@ public class GameService {
 		List<GameMinDto> gamesMinDto = games.stream().map(game -> new GameMinDto(game)).toList();
 		return gamesMinDto;
 		
+	}
+	
+	public GameMinDto getGameById(Long id) {
+		Optional<Game> game = repository.findById(id);
+		if (game.isPresent()) {
+			return new GameMinDto(game.get());
+		} else return null;
 	}
 	
 	private GameDto getGameDto(Game game) {
