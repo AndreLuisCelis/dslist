@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.celisapp.dslist.dto.GameDto;
+import com.celisapp.dslist.dto.GameMinDto;
 import com.celisapp.dslist.entities.Game;
 import com.celisapp.dslist.service.GameService;
 
@@ -21,7 +22,7 @@ public class GameController {
 	private GameService service;
 	
 	@GetMapping("")
-	private List<GameDto> getAllGames(){
+	private List<GameMinDto> getAllGames(){
 		return service.getGameList();
 	}
 	

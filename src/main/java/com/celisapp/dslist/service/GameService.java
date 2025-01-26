@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.celisapp.dslist.dto.GameDto;
+import com.celisapp.dslist.dto.GameMinDto;
 import com.celisapp.dslist.entities.Game;
 import com.celisapp.dslist.repositories.GameRepository;
 
@@ -20,10 +21,10 @@ public class GameService {
 		return getGameDto(newGame);
 	}
 	
-	public List<GameDto> getGameList() {
+	public List<GameMinDto> getGameList() {
 		var games = repository.findAll();
-		List<GameDto> gamesDto = games.stream().map(game -> getGameDto(game)).toList();
-		return gamesDto;
+		List<GameMinDto> gamesMinDto = games.stream().map(game -> new GameMinDto(game)).toList();
+		return gamesMinDto;
 		
 	}
 	
@@ -31,6 +32,10 @@ public class GameService {
 		var gameDto = new GameDto(game.getId(), game.getTitle(), game.getYear(), game.getGenre(), game.getPlatforms(),
 				game.getScore(), game.getImgUrl(), game.getShortDescription(), game.getLongDescription());
 		return gameDto;
+	}
+	
+	private GameMinDto getGameMinDto (Game game) {
+		return new GameMinDto(game);
 	}
 
 }
